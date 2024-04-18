@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <%- include('../partials/head') %>
+  </head>
+  <body>
+    <div class="container-main">
+      <%- include('../partials/sidebar') %>
+      <main>
+        <h1><%= title %></h1>
+        <% if (bookList.length) { %>
+          <% for (let book of bookList) { %>
+            <li>
+              <a href=<%= book.url %>><%= book.title %></a> (<%= book.author.name %>)
+            </li>
+            <% } %>
+        <% } else { %>
+          <p>There are no books.</p>
+        <% } %>
+      </main>
+    </div>
+    <%- include('../partials/footer') %>
+  </body>
+</html>

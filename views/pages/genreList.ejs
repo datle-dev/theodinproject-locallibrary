@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <%- include('../partials/head') %>
+  </head>
+  <body>
+    <div class="container-main">
+      <%- include('../partials/sidebar') %>
+      <main>
+        <h1><%= title %></h1>
+        <% if (genreList.length) { %>
+          <% for (let genre of genreList) { %>
+            <li>
+              <a href=<%= genre.url %>><%= genre.name %></a>
+            </li>
+            <% } %>
+        <% } else { %>
+          <p>There are no genres.</p>
+        <% } %>
+      </main>
+    </div>
+    <%- include('../partials/footer') %>
+  </body>
+</html>

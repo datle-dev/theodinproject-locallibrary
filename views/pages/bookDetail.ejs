@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <%- include('../partials/head') %>
+  </head>
+  <body>
+    <div class="container-main">
+      <%- include('../partials/sidebar') %>
+      <main>
+        <h1><%= title %></h1>
+        <h2>Title: <%= book.title %></h2>
+        <p><strong>Author:</strong> <a href=<%= book.author.url %>><%= book.author.name %></a></p>
+        <p><strong>Summary:</strong> <%= book.summary %></p>
+        <p><strong>ISBN:</strong> <%= book.isbn %></p>
+        <p>
+          <strong>Genre:</strong>
+          <% book.genre.forEach((genre, index) => { %>
+            <a href=<%= genre.url %>><%= genre.name %></a>
+            <% if (index < book.genre.length - 1) { %>
+              ,&nbsp;
+            <% } %>
+          <% }) %>
+        </p>
+        <h3>Copies</h3>
+        <% bookInstances.forEach((bookInstance) => { %>
+          <% if (bookInstance.status === 'Available') { %>
+            <p class="text-success"><%= bookInstance.status %></p>
+          <% } else if (bookInstance.status === 'Maintenance') { %>
+            <p class="text-danger"><%= bookInstance.status %></p>
+          <% } else { %>
+            <p class="text-warning"><%= bookInstance.status %></p>
+          <% } %>
+          <p><strong>Imprint:</strong> <%= bookInstance.imprint %></p>
+          <% if (bookInstance.status !== 'Available') { %>
+            <p><strong>Due back:</strong> <%= bookInstance.due_back %></p>
+            <p><strong>ID:</strong> <a href=<%= bookInstance.url %>><%= bookInstance._id %></a></p>
+          <% } else { %>
+            <p>There are no copies of this book in the library.</p>
+          <% } %>
+        <% }) %>
+      </main>
+    </div>
+    <%- include('../partials/footer') %>
+  </body>
+</html>

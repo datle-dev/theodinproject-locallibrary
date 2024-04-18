@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <%- include('../partials/head') %>
+  </head>
+  <body>
+    <div class="container-main">
+      <%- include('../partials/sidebar') %>
+      <main>
+        <h1><%= title %></h1>
+        <% if (authorList.length) { %>
+          <% for (let author of authorList) { %>
+            <li>
+              <a href=<%= author.url %>><%= author.name %></a>
+              (<%= author.date_of_birth_formatted %> - <%= author.date_of_death_formatted %>)
+            </li>
+            <% } %>
+        <% } else { %>
+          <p>There are no authors.</p>
+        <% } %>
+      </main>
+    </div>
+    <%- include('../partials/footer') %>
+  </body>
+</html>

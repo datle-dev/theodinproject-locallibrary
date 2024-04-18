@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <%- include('../partials/head') %>
+  </head>
+  <body>
+    <div class="container-main">
+      <%- include('../partials/sidebar') %>
+      <main>
+        <h1><%= title %></h1>
+        <% if (bookinstanceList.length) { %>
+          <% for (let book of bookinstanceList) { %>
+            <li>
+              <a href=<%= book.url %>><%= book.title %> <%= book.imprint %></a>
+              <% if (book.status === 'Available') { %>
+                <span class="text-success"><%= book.status %></span>
+              <% } else if (book.status === 'Maintenance') { %>
+                <span class="text-danger"><%= book.status %></span>
+              <% } else { %>
+                <span class="text-warning"><%= book.status %></span>
+              <% } %>
+              <% if (book.status != 'Available') { %>
+                <span>(Due: <%= book.due_back %>)</span>
+              <% } %>
+            </li>
+            <% } %>
+        <% } else { %>
+          <p>There are no book copies in this library.</p>
+        <% } %>
+      </main>
+    </div>
+    <%- include('../partials/footer') %>
+  </body>
+</html>

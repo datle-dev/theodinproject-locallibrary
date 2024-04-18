@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <%- include('../partials/head') %>
+  </head>
+  <body>
+    <div class="container-main">
+      <%- include('../partials/sidebar') %>
+      <main>
+        <h1><%= title %></h1>
+        <h2>Author: <%= author.name %></h2>
+        <p><%= author.date_of_birth_formatted %> - <%= author.date_of_death_formatted %></p>
+        <h3>Books</h3>
+        <% if (authorBooks.length) { %>
+          <% for (let book of authorBooks) { %>
+            <dt>
+              <a href=<%= book.url %>><%= book.title %></a>
+            </dt>
+            <dd><%= book.summary %></dd>
+            <% } %>
+        <% } else { %>
+          <p>This author has no books.</p>
+        <% } %>
+      </main>
+    </div>
+    <%- include('../partials/footer') %>
+  </body>
+</html>

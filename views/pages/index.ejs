@@ -5,21 +5,28 @@
     <%- include('../partials/head') %>
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>
-      Welcome to <em>LocalLibrary</em>, a very basic Express website developed
-      as a tutorial example on the Mozilla Developer Network.
-    </p>
-    <%- include('../partials/sidebar') %>
-    <h2>Dynamic Content</h2>
-    <p>This library has the following content records:</p>
-    <ul>
-      <li><strong>Books:</strong> <%= book_count %></li>
-      <li><strong>Copies:</strong> <%= book_instance_count %></li>
-      <li><strong>Copies available:</strong> <%= book_instance_available_count %></li>
-      <li><strong>Authors:</strong> <%= author_count %></li>
-      <li><strong>Genres:</strong> <%= genre_count %></li>
-    </ul>
-    <%- include('../partials/footer') %>
+    <div class="container-main">
+      <%- include('../partials/sidebar') %>
+      <main>
+        <h1><%= title %></h1>
+        <p>
+          Welcome to <em>LocalLibrary</em>, a very basic Express website
+          developed as a tutorial example on the Mozilla Developer Network.
+        </p>
+        <h2>Dynamic Content</h2>
+        <p>This library has the following content records:</p>
+        <ul>
+          <li><strong>Books:</strong> <%= book_count %></li>
+          <li><strong>Copies:</strong> <%= book_instance_count %></li>
+          <li>
+            <strong>Copies available:</strong> <%= book_instance_available_count
+            %>
+          </li>
+          <li><strong>Authors:</strong> <%= author_count %></li>
+          <li><strong>Genres:</strong> <%= genre_count %></li>
+        </ul>
+      </main>
+      <%- include('../partials/footer') %>
+    </div>
   </body>
 </html>

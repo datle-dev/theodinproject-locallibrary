@@ -12,7 +12,7 @@
         <% if (bookinstanceList.length) { %>
           <% for (let book of bookinstanceList) { %>
             <li>
-              <a href=<%= book.url %>><%= book.title %> <%= book.imprint %></a>
+              <a href=<%= book.url %>><%= book.book.title %> : <%= book.imprint %></a>
               <% if (book.status === 'Available') { %>
                 <span class="text-success"><%= book.status %></span>
               <% } else if (book.status === 'Maintenance') { %>

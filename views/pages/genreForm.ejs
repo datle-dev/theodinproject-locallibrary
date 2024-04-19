@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <%- include('../partials/head') %>
+  </head>
+  <body>
+    <div class="container-main">
+      <%- include('../partials/sidebar') %>
+      <main>
+        <h1><%= title %></h1>
+        <form action="" method="post">
+          <div>
+            <label for="name">Genre:</label>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Fantasy, Poetry, etc."
+              value="<%= typeof genre === "undefined" ? "" : genre.name %>"
+              required
+            />
+          </div>
+          <button type="submit">Submit</button>
+        </form>
+        <% if (typeof errors !== "undefined") { %>
+          <ul>
+            <% for (let error of errors) { %>
+              <li><%= error.msg %></li>
+            <% } %>
+          </ul>
+        <% } %>
+      </main>
+    </div>
+    <%- include('../partials/footer') %>
+  </body>
+</html>

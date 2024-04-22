@@ -24,6 +24,10 @@
         <% if (bookInstance.status !== 'Available') { %>
           <p><strong>Due back:</strong> <%= bookInstance.due_back_formatted %></p>
         <% } %>
+        <hr>
+        <p>
+          <a href=<%= bookInstance.url + "/delete" %>>Delete Book Instance</a>
+        </p>
       </main>
     </div>
     <%- include('../partials/footer') %>

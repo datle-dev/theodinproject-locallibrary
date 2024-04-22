@@ -39,6 +39,13 @@
             <p>There are no copies of this book in the library.</p>
           <% } %>
         <% }) %>
+        <hr>
+        <p>
+          <a href=<%= book.url + "/delete" %>>Delete Book</a>
+        </p>
+        <p>
+          <a href=<%= book.url + "/update" %>>Update Book</a>
+        </p>
       </main>
     </div>
     <%- include('../partials/footer') %>

@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <%- include('../partials/head') %>
+  </head>
+  <body>
+    <div class="container-main">
+      <%- include('../partials/sidebar') %>
+      <main>
+        <h1><%= title %>: <%= author.name %></h1>
+        <p><%= author.date_of_birth_formatted %> - <%= author.date_of_death_formatted %></p>
+        <% if (author_books.length) { %>
+          <p><strong>Delete the following books before attempting to delete this author.</strong></p>
+          <div>
+            <h2>Books</h2>
+            <dl>
+              <% for (let book of author_books) { %>
+                <dt>
+                  <a href=<%= book.url %>><%= book.title %></a>
+                </dt>
+                <dd><%= book.summary %></dd>
+              <% } %>
+            </dl>
+          </div>
+        <% } else { %>
+          <p>Do you really want to delete this Author?</p>
+        <% } %>
+        <form action="" method="post">
+          <input
+            type="hidden"
+            name="authorid"
+            id="authorid"
+            value="<%= author._id %>"
+          />
+          <button type="submit">Submit</button>
+        </form>
+      </main>
+    </div>
+    <%- include('../partials/footer') %>
+  </body>
+</html>
